@@ -23,4 +23,6 @@ Wechat::getWeChatGroupList($access_token,$status_filter = 0,$userid_list = [],$c
 Wechat::getWeChatGroupDetailById($access_token, $chat_id, $need_name = 0)
 
 
+
+
 ```

@@ -14,5 +14,13 @@
             "email": "17638567762@163.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "src/helper.php"
+        ],
+        "psr-4": {
+            "Luyh\\Wechat\\": "src/"
+        }
+    }
 }

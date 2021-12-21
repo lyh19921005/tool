@@ -32,6 +32,8 @@ class Wechat
             throw new Exception(isset($result['errcode']) ? $result['errmsg'] : '获取token失败！');
         }
 
+        //调整
+
     }
 
     /**

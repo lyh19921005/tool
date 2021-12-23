@@ -1,11 +1,11 @@
 {
     "name": "luyh/wechat",
-    "description": "this is wechat group tool",
+    "description": "企业微信群管理",
     "type": "library",
     "require": {
-        "php": ">=7.0",
-        "ext-openssl": "^7.3",
-        "ext-curl": "^7.3"
+        "php": "^7.0",
+        "ext-openssl": "*",
+        "ext-curl": "*"
     },
     "license": "MIT",
     "authors": [
@@ -14,7 +14,6 @@
             "email": "17638567762@163.com"
         }
     ],
-    "minimum-stability": "dev",
     "autoload": {
         "files": [
             "src/helper.php"

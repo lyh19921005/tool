@@ -3,6 +3,7 @@
 namespace Luyh\Wechat;
 
 use Exception;
+use Luyh\Wechat\Tool\MsgCrypt;
 
 class Wechat
 {
@@ -97,6 +98,32 @@ class Wechat
             throw new Exception(isset($result['errcode']) ? $result['errmsg'] : '获取群列详情失败！');
         }
 
+    }
+
+    /**
+     * 验证回调URL的有效性
+     * @param $token
+     * @param $encodingAesKey
+     * @param $corpId
+     * @param $msg_signature
+     * @param $timestamp
+     * @param $nonce
+     * @param $echostr
+     * @return string
+     * @throws Exception
+     * @author luyh 17638567762@163.com
+     * @time 2021/12/23 14:02
+     */
+    public static function verifyUrl($token, $encodingAesKey, $corpId, $msg_signature,$timestamp,$nonce,$echostr)
+    {
+        $sEchoStr = "";
+        $wxcpt = new MsgCrypt($token,$encodingAesKey,$corpId);
+        $errCode = $wxcpt->VerifyURL($msg_signature,$timestamp,$nonce,$echostr,$sEchoStr);
+        if ($errCode == 0) {
+            return $sEchoStr;
+        } else {
+            throw new Exception('验证失败.code码是', $errCode.'生成的字符串是'.$sEchoStr);
+        }
     }
 
 

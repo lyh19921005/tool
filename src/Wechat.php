@@ -126,6 +126,35 @@ class Wechat
         }
     }
 
+    /**
+     * 解密回调的数据返回数组
+     * @param $token
+     * @param $encodingAesKey
+     * @param $corpId
+     * @param $msgSignature
+     * @param $timestamp
+     * @param $nonce
+     * @param $postData
+     * @return array
+     * @throws Exception
+     * @author luyh 17638567762@163.com
+     * @time 2021/12/23 14:27
+     */
+    public static function decryptMsg($token,$encodingAesKey,$corpId,$msgSignature,$timestamp,$nonce,$postData)
+    {
+        $sMsg = "";
+        $wxcpt = new MsgCrypt($token, $encodingAesKey, $corpId);
+        $errCode = $wxcpt->DecryptMsg($msgSignature,$timestamp,$nonce,$postData,$sMsg);
+        if ($errCode == 0) {
+            $arr = simplexml_load_string($sMsg,'SimpleXMLElement',LIBXML_NOCDATA);
+            $arr = json_decode(json_encode($arr),true);
+            return array_map('trim',$arr);
+        }else {
+            throw new Exception('验证失败.code码是', $errCode);
+        }
+    }
+
+
 
 
 }

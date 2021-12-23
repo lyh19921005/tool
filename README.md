@@ -29,6 +29,10 @@ Wechat::getWeChatGroupDetailById($access_token, $chat_id, $need_name = 0)
 参数内容见微信官方文档(https://work.weixin.qq.com/api/doc/90000/90135/90238#%E9%AA%8C%E8%AF%81URL%E6%9C%89%E6%95%88%E6%80%A7)
 Wechat::verifyUrl($token, $encodingAesKey, $corpId, $msg_signature,$timestamp,$nonce,$echostr)
 
+//解密回调数据,返回数组
+
+wechat::decryptMsg($token,$encodingAesKey,$corpId,$msgSignature,$timestamp,$nonce,$postData)
+
 
 
 

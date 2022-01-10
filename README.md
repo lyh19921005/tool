@@ -1,9 +1,9 @@
 ## 使用方法
 
 ### 安装扩展
- > composer require luyh/wechat
+> composer require luyh/wechat
 
- ### 使用方法
+### 使用方法
 ``` php
 
 use Luyh/Wechat
@@ -37,3 +37,4 @@ wechat::decryptMsg($token,$encodingAesKey,$corpId,$msgSignature,$timestamp,$nonc
 
 
 ```
+

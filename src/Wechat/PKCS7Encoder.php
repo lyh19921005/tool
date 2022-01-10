@@ -1,6 +1,7 @@
 <?php
 
-namespace Luyh\Wechat\Tool;
+namespace Luyh\Tool\Wechat;
+require_once 'ErrorCode.php';
 
 /**
  * PKCS7Encoder class

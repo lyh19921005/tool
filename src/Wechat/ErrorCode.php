@@ -1,6 +1,6 @@
 <?php
 
-namespace Luyh\Wechat\Tool;
+namespace Luyh\Tool\Wechat;
 /**
  * error code 说明.
  * <ul>

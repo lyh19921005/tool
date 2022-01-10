@@ -46,7 +46,7 @@ function http_post($url,$param,$post_file=false){
             curl_setopt($oCurl, CURLOPT_SAFE_UPLOAD, false);
         }
     }
-
+    
     if($post_file) {
         if($is_curlFile) {
             foreach ($param as $key => $val) {                     
@@ -61,7 +61,7 @@ function http_post($url,$param,$post_file=false){
     }else{
         $strPOST = json_encode($param);
     } 
-
+    
     curl_setopt($oCurl, CURLOPT_URL, $url);
     curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
     curl_setopt($oCurl, CURLOPT_POST,true);
@@ -89,7 +89,7 @@ function execCURL($ch){
                      'curl_error' => '', 
                      'http_code' => '',
                      'last_url' => '');
-
+    
     if ($error != ""){
         $result['curl_error'] = $error;
         return $result;
@@ -145,7 +145,7 @@ function loadConfig(){
 //根据应用ID获取应用配置
 function getConfigByAgentId($id){
     $configs = loadConfig();
-
+    
     foreach ($configs->AppsConfig as $key => $value) {                
         if($value->AgentId == $id){
             $config = $value;
@@ -155,3 +155,4 @@ function getConfigByAgentId($id){
 
     return $config;
 }
+

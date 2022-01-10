@@ -1,5 +1,7 @@
 <?php
-namespace Luyh\Wechat\Tool;
+namespace Luyh\Tool\Wechat;
+require_once 'ErrorCode.php';
+
 /**
  * XMLParse class
  *
@@ -23,7 +25,7 @@ class XMLParse
 			$encrypt = $array_e->item(0)->nodeValue;
 			$tousername = $array_a->item(0)->nodeValue;
 			return array(0, $encrypt, $tousername);
-		} catch (\Exception $e) {
+		} catch (Exception $e) {
 			print $e . "\n";
 			return array(ErrorCode::$ParseXmlError, null, null);
 		}
@@ -54,16 +56,16 @@ class XMLParse
 	 */
 	public function extractCallbackParamter($xmltext)
 	{
-		try {				
+		try {
 			$xml = new \DOMDocument();
 			$xml->loadXML($xmltext);
 			$Encrypt = $xml->getElementsByTagName('Encrypt')->item(0)->nodeValue;
 			$MsgSignature = $xml->getElementsByTagName('MsgSignature')->item(0)->nodeValue;
 			$TimeStamp = $xml->getElementsByTagName('TimeStamp')->item(0)->nodeValue;
 			$Nonce = $xml->getElementsByTagName('Nonce')->item(0)->nodeValue;
-			
+
 			return array($Encrypt, $MsgSignature, $TimeStamp,$Nonce);
-		} catch (\Exception $e) {
+		} catch (Exception $e) {
 			print $e . "\n";
 			return array(ErrorCode::$ParseXmlError, null, null);
 		}
@@ -73,14 +75,14 @@ class XMLParse
 	 * 生成xml消息
 	 * @param string $encrypt 加密后的消息密文
 	 * @param string $agentId 应用ID
-	 * @param string $tousername 企业ID	 
+	 * @param string $tousername 企业ID
 	 */
 	public function generateCallbackXml($encrypt, $agentId, $tousername)
 	{
 		$format = "<xml>
 					   <ToUserName><![CDATA[%s]]></ToUserName>
 					   <AgentID><![CDATA[%s]]></AgentID>
-					   <Encrypt>%s</Encrypt>					   
+					   <Encrypt>%s</Encrypt>
 				   </xml>";
 		return sprintf($format,$tousername,$agentId,$encrypt);
 	}

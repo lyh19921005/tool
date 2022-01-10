@@ -1,6 +1,11 @@
 <?php
 
-namespace Luyh\Wechat\Tool;
+namespace Luyh\Tool\Wechat;
+
+require_once 'PKCS7Encoder.php';
+require_once 'SHA1.php';
+require_once 'ErrorCode.php';
+require_once 'XMLParse.php';
 
 /**
  * 对企业微信发送给企业的消息加解密示例代码.
@@ -29,7 +34,7 @@ class MsgCrypt
 		$this->m_sEncodingAesKey = $encodingAesKey;
 		$this->m_sCorpid = $Corpid;
 	}
-	
+
     /*
 	*验证URL
     * @param sMsgSignature: 签名串，对应URL参数的msg_signature

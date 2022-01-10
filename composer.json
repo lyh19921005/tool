@@ -1,25 +1,20 @@
 {
-    "name": "luyh/wechat",
-    "description": "企业微信群管理",
-    "type": "library",
+    "name": "luyh/tool",
     "require": {
-        "php": "^7.0",
+        "php": "^7.3",
         "ext-openssl": "*",
         "ext-curl": "*"
     },
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Luyh\\Tool\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "luyh",
             "email": "17638567762@163.com"
         }
-    ],
-    "autoload": {
-        "files": [
-            "src/helper.php"
-        ],
-        "psr-4": {
-            "Luyh\\Wechat\\": "src/"
-        }
-    }
+    ]
 }

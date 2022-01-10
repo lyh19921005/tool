@@ -1,12 +1,12 @@
 ## 使用方法
 
 ### 安装扩展
-> composer require luyh/wechat
+> composer require luyh/tool
 
 ### 使用方法
 ``` php
 
-use Luyh/Wechat
+use Luyh\Tool\Wechat;
 
 
 //获取token
